@@ -3,7 +3,7 @@
 use strict;
 use Test qw(plan ok);
 
-plan tests => 8;
+plan tests => 9;
 
 use Digest::Adler32;
 
