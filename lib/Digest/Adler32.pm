@@ -2,7 +2,7 @@ package Digest::Adler32;
 
 use strict;
 use vars qw($VERSION @ISA);
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 require Digest::base;
 @ISA=qw(Digest::base);
@@ -22,6 +22,13 @@ sub clone {
     my $self = shift;
     my $adler_state = $$self;
     return bless \$adler_state, ref($self);
+}
+
+sub state {
+    my $self = shift;
+    my $old = $$self;
+    $$self = shift if @_;
+    $old;
 }
 
 # Based on RFC 1950 section 9
