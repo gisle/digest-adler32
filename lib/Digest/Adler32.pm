@@ -2,7 +2,7 @@ package Digest::Adler32;
 
 use strict;
 use vars qw($VERSION @ISA);
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 require Digest::base;
 @ISA=qw(Digest::base);
@@ -54,15 +54,27 @@ sub digest {
 
 Digest::Adler32 - The Adler-32 checksum
 
+=head1 SYNPOSIS
+
+ use Digest::Adler32;
+ $a32 = Digest::Adler32->new;
+
+ # add stuff
+ $a32->add($some_data);
+ $a32->addfile(*STDIN);
+
+ # get digest
+ print "Adler32: ", $a32->hexdigest, "\n";
+
+
 =head1 DESCRIPTION
 
 The C<Digest::Adler32> module implements the Adler-32 checksum as
 specified in RFC 1950.  The interface provided by this module is
-specified in L<Digest>.
+specified in L<Digest>, but no functional interface is provided.
 
 A binary digest will be 4 bytes long.  A hex digest will be 8
 characters long.  A base64 digest will be 6 characters long.
-
 
 =head1 SEE ALSO
 
@@ -75,9 +87,5 @@ modify it under the same terms as Perl itself.
 
   Copyright 1996 L. Peter Deutsch and Jean-Loup Gailly
   Copyright 2001,2003 Gisle Aas
-
-=head1 AUTHOR
-
-Gisle Aas <gisle@aas.no>
 
 =cut

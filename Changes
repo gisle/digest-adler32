@@ -1,4 +1,12 @@
 2003-11-28   Gisle Aas <gisle@ActiveState.com>
 
+   Release 0.02
+
+   Drat!  Forgot PREREQ_PM in the Makefile.PL
+
+
+
+2003-11-28   Gisle Aas <gisle@ActiveState.com>
+
    Release 0.01
 
