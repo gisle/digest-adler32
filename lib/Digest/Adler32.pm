@@ -2,7 +2,7 @@ package Digest::Adler32;
 
 use strict;
 use vars qw($VERSION @ISA);
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 require Digest::base;
 @ISA=qw(Digest::base);
@@ -28,16 +28,15 @@ sub clone {
 
 sub add {
     my $self = shift;
+    my $s1 = $$self & 0x0000FFFF;
+    my $s2 = ($$self >> 16) & 0x0000FFFF;
     for my $buf (@_) {
-	my $s1 = $$self & 0x0000FFFF;
-	my $s2 = ($$self >> 16) & 0x0000FFFF;
-
-	for (unpack("C*", $buf)) {
-	    $s1 = ($s1 + $_ ) % 65521;
+	for my $c (unpack("C*", $buf)) {
+	    $s1 = ($s1 + $c ) % 65521;
 	    $s2 = ($s2 + $s1) % 65521;
-	    $$self = ($s2 << 16) + $s1;
 	}
     }
+    $$self = ($s2 << 16) + $s1;
     return $self;
 }
 
