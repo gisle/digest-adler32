@@ -4,7 +4,7 @@
 
    Faster and simpler add().  José Micó <jmico@citynet.net.ar>
    found that some expressions could be moved outside of the
-   innner loop.
+   inner loop.
 
 
 

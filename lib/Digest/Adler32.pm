@@ -53,7 +53,7 @@ sub digest {
 
 Digest::Adler32 - The Adler-32 checksum
 
-=head1 SYNPOSIS
+=head1 SYNOPSIS
 
  use Digest::Adler32;
  $a32 = Digest::Adler32->new;

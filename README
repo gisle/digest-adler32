@@ -1,6 +1,6 @@
 The Digest::Adler32 implements the Adler-32 checksum as
-specified in RFC 1950 within the Digest:: framwork.  This
-is a very weak Digest, only producing 32 bit digests.
+specified in RFC 1950 within the Digest:: framework.  This
+is a weak digest, producing only a 32 bit result.
 
 Copyright 1996 L. Peter Deutsch and Jean-Loup Gailly
 Copyright 2001,2003 Gisle Aas
