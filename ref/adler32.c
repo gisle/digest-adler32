@@ -3,7 +3,7 @@
 
 /* Copied from RFC 1950 */
 
-#define BASE 65536
+#define BASE 65521 /* largest prime smaller than 65536 */
 
 unsigned long update_adler32(unsigned long adler,
 			     unsigned char *buf, int len)
