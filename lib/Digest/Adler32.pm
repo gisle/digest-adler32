@@ -10,6 +10,10 @@ require Digest::base;
 sub new
 {
     my $class = shift;
+    if (ref $class) {
+	$$class = 1;  # reset
+	return $class;
+    }
     my $adler_state = 1;
     return bless \$adler_state, $class;
 }
@@ -28,7 +32,7 @@ sub add {
 	my $s1 = $$self & 0x0000FFFF;
 	my $s2 = ($$self >> 16) & 0x0000FFFF;
 
-	for (unpack("C", $buf)) {
+	for (unpack("C*", $buf)) {
 	    $s1 = ($s1 + $_ ) % 65521;
 	    $s2 = ($s2 + $s1) % 65521;
 	    $$self = ($s2 << 16) + $s1;
@@ -40,7 +44,7 @@ sub add {
 sub digest {
     my $self = shift;
     my $digest = pack("N", $$self);
-    $$self = 1;
+    $$self = 1;  # reset
     return $digest;
 }
 
