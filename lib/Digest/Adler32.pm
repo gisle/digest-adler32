@@ -39,7 +39,9 @@ sub add {
 
 sub digest {
     my $self = shift;
-    return pack("N", $$self);
+    my $digest = pack("N", $$self);
+    $$self = 1;
+    return $digest;
 }
 
 1;
