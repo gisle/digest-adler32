@@ -3,7 +3,7 @@
 use strict;
 use Test qw(plan ok);
 
-plan tests => 9;
+plan tests => 10;
 
 use Digest::Adler32;
 
@@ -28,3 +28,6 @@ ok($a32->hexdigest, "080c024d");
 $a32->add("base64");
 ok($a32->b64digest, "B9ICBg");
 ok($a32->b64digest, "AAAAAQ");  # reset
+
+$a32->add("\xFF" x 32);
+ok($a32->hexdigest, "0e2e1fe1");
