@@ -1,9 +1,11 @@
 package Digest::Adler32;
 
 use strict;
-use vars qw(@ISA);
-require Digest::Base;
-@ISA=qw(Digest::Base);
+use vars qw($VERSION @ISA);
+$VERSION = '0.01';
+
+require Digest::base;
+@ISA=qw(Digest::base);
 
 sub new
 {
@@ -12,10 +14,15 @@ sub new
     return bless \$adler_state, $class;
 }
 
+sub clone {
+    my $self = shift;
+    my $adler_state = $$self;
+    return bless \$adler_state, ref($self);
+}
+
 # Based on RFC 1950 section 9
 
-sub add
-{
+sub add {
     my $self = shift;
     for my $buf (@_) {
 	my $s1 = $$self & 0x0000FFFF;
@@ -30,8 +37,7 @@ sub add
     return $self;
 }
 
-sub digest
-{
+sub digest {
     my $self = shift;
     return pack("N", $$self);
 }
