@@ -3,3 +3,5 @@ MANIFEST
 Makefile.PL
 README
 lib/Digest/Adler32.pm
+adler32.c
+t/adler32.t
