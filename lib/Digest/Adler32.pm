@@ -12,8 +12,7 @@ sub new
     return bless \$adler_state, $class;
 }
 
-# Based on Generic C implementation at:
-#  http://www.geocities.com/manuelkasper/prog/adler32.html
+# Based on RFC 1950 section 9
 
 sub add
 {
@@ -23,10 +22,8 @@ sub add
 	my $s2 = ($$self >> 16) & 0x0000FFFF;
 
 	for (unpack("C", $buf)) {
-	    $s1 += $_;
-	    $s1 -= 65521 if $s1 > 65521;
-	    $s2 += $s1;
-	    $s2 -= 65521 if $s2 > 65521;
+	    $s1 = ($s1 + $_ ) % 65521;
+	    $s2 = ($s2 + $s1) % 65521;
 	    $$self = ($s2 << 16) + $s1;
 	}
     }
