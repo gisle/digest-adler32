@@ -43,3 +43,35 @@ sub digest {
 }
 
 1;
+
+=head1 NAME
+
+Digest::Adler32 - The Adler-32 checksum
+
+=head1 DESCRIPTION
+
+The C<Digest::Adler32> module implements the Adler-32 checksum as
+specified in RFC 1950.  The interface provided by this module is
+specified in L<Digest>.
+
+A binary digest will be 4 bytes long.  A hex digest will be 8
+characters long.  A base64 digest will be 6 characters long.
+
+
+=head1 SEE ALSO
+
+L<Digest>, L<Digest::MD5>
+
+=head1 COPYRIGHT
+
+This library is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
+
+  Copyright 1996 L. Peter Deutsch and Jean-Loup Gailly
+  Copyright 2001,2003 Gisle Aas
+
+=head1 AUTHOR
+
+Gisle Aas <gisle@aas.no>
+
+=cut
